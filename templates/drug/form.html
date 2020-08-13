@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %} Add Drug {% endblock %}
+{% block body %}
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header" action="" method="POST">
+                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                            <button class="au-btn--submit" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                        <div class="header-button">
+                            <div class="noti-wrap">
+
+                            </div>
+                            <div class="account-wrap">
+                                <div class="account-item clearfix ">
+                                    <div class="image">
+                                        <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                    </div>
+                                    <div class="content">
+                                        <a class="" href="#">{{ request.user }}</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p35">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Drug</strong>
+                                    <small> Form</small>
+                                </div>
+                                <form method="post" action="">
+                                    {% csrf_token %}
+                                    <div class="card-body card-block">
+                                        {% for message in messages %}
+                                            <div {% if messages.error %} class="alert alert-warning messages" {% else %} class="alert alert-success messages" {% endif %} >
+                                                <h3>{{ message }}</h3>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="form-group">
+                                            <label for="drugName" class=" form-control-label">Drug Name</label>
+                                            {{ form.drug_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="NafNumber" class=" form-control-label">NAFDAC Number</label>
+                                            {% render_field form.nafdac_number value=nafdac_number %}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="trackingCode" class=" form-control-label">Tracking Code</label>
+                                            {{ form.tracking_code }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="productDate" class=" form-control-label">Production Date</label>
+                                            {{ form.production_date }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="expireDate" class=" form-control-label">Expiry Date</label>
+                                            {{ form.expiry_date }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="batchNumber" class=" form-control-label">Batch Number</label>
+                                            {{ form.batch_number }}
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2020 NAFDAC. All rights reserved. Developed by <a href="">Eprojects</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

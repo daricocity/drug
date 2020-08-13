@@ -1,0 +1,62 @@
+{% extends 'accounts/snippets/base.html' %}
+{% load staticfiles %}
+{% block title %} NAFDAC Number {% endblock %}
+{% block body %}
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="{% static 'images/icon/logo.png' %}" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        {% for message in messages %}
+							<div {% if messages.error %} class="alert alert-warning messages" {% else %} class="alert alert-success messages" {% endif %} >
+								<h3>{{ message }}</h3>
+							</div>
+						{% endfor %}
+                        <div class="login-form">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label style="font-weight: bold">Drug Name</label>
+                                    <div class="form-group">
+                                        {{ drug.drug_name }}
+                                    </div>
+
+                                    <label style="font-weight: bold">NAFDAC Number</label>
+                                    <div class="form-group">
+                                        {{ drug.nafdac_number }}
+                                    </div>
+
+                                    <label style="font-weight: bold">Tracking Code</label>
+                                    <div class="form-group">
+                                        {{ drug.tracking_code }}
+                                    </div>
+
+                                    <label style="font-weight: bold">Production Date</label>
+                                    <div class="form-group">
+                                        {{ drug.production_date }}
+                                    </div>
+
+                                    <label style="font-weight: bold">Expiry Date</label>
+                                    <div class="form-group">
+                                        {{ drug.expiry_date }}
+                                    </div>
+
+                                    <label style="font-weight: bold">Batch Number</label>
+                                    <div class="form-group">
+                                        {{ drug.batch_number }}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/iosoon-style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/iosoon-theme4.css' %}">
+    </head>
+    <body>
+        <div class="form-body">
+            <div class="row">
+                <div class="img-holder">
+                    <div class="info-holder">
+                        <img src="{% static 'images/icon/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="form-holder">
+                    <div class="website-logo">
+                        <a href="index-2.html">
+                            <div class="logo">
+                                <img class="logo-size" src="{% static 'images/icon/logo2.png' %}" alt="">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="other-links other-links-up no-bg-icon">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>Online Drug Verification System</h3>
+                            <p>Online Drug verification and Authentication system.</p>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <a href="{% url 'confirm_drug' %}" type="button" class="btn btn-primary">Click here to verify drug</a>
+                                </div>
+                            </div><br>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <a href="{% url 'register' %}" type="button" class="btn btn-primary">Click here to Register</a>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="time-counter form-row">
+                                <div class="days count col">
+                                    <div class="num">38</div>
+                                    <div class="label">Days</div>
+                                </div>
+                                <div class="hours count col">
+                                    <div class="num">13</div>
+                                    <div class="label">Hrs</div>
+                                </div>
+                                <div class="minutes count col">
+                                    <div class="num">59</div>
+                                    <div class="label">Min</div>
+                                </div>
+                                <div class="seconds count col">
+                                    <div class="num">30</div>
+                                    <div class="label">Sec</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>

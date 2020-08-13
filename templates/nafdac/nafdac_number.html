@@ -1,0 +1,58 @@
+{% extends 'accounts/snippets/base.html' %}
+{% load staticfiles %}
+{% block title %}{% if request.path == '/register' %} Register {% elif request.path == '/confirm_drug' %} Confirm Drug {% else %} NAFDAC Number {% endif %} {% endblock %}
+{% block body %}
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="{% static 'images/icon/logo.png' %}" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        {% for message in messages %}
+							<div {% if messages.error %} class="alert alert-warning messages" {% else %} class="alert alert-success messages" {% endif %} >
+								<h3>{{ message }}</h3>
+							</div>
+						{% endfor %}
+                        <div class="login-form">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {% if request.path == '/naf' %}
+                                        <label>Reference Number</label>
+                                        <div class="form-group">
+                                            {{ form.reference_number }}
+                                        </div>
+                                        <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Add</button>
+                                    {% elif request.path == '/register' %}
+                                        <label>NAFDAC Number</label>
+                                        <div class="form-group">
+                                            {{ form.Nafdac_number }}
+                                        </div>
+                                        <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Check</button>
+                                        <div class="register-link">
+                                            <p>
+                                                Already have account?
+                                                <a href="{% url 'login' %}">Login</a>
+                                            </p>
+                                        </div>
+                                    {% elif request.path == '/confirm_drug' %}
+                                        <label>Tracking Code</label>
+                                        <div class="form-group">
+                                            {{ form.tracking_code }}
+                                        </div>
+                                        <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Confirm</button>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
